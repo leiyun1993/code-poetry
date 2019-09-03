@@ -32,22 +32,18 @@ export default {
         };
     },
     mounted() {
-        setTimeout(() => {
-            this.initMenu();
-        }, 100);
-        
+    },
+    watch:{
+        $route(to,from){
+            console.log("routeChange:",to,from);
+            this.routeName = this.$route.name;
+        }
     },
     methods: {
-        initMenu() {
-            console.log("route1:", this.$route);
-            this.routeName = this.$route.name;
-        },
         onMenuClick(routerName) {
             this.$router.push({
                 name: routerName
             });
-            console.log("route:", this.$route);
-            this.routeName = this.$route.name;
         }
     },
     filters: {}
@@ -55,7 +51,7 @@ export default {
 </script>
 <style scoped>
 .header-root {
-    height: 260px;
+    height: 160px;
     position: fixed;
     top: 0;
     width: 100%;

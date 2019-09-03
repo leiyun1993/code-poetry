@@ -58,7 +58,7 @@ export default {
     flex: 1;
 }
 .index-title {
-    margin-top: 18vh;
+    margin-top: 80px;
     margin-left: 20vw;
     font-size: 30px;
     position: relative;

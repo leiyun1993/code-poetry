@@ -63,7 +63,7 @@ export default {
     overflow: hidden;
 }
 .index-title {
-    margin-top: 30vh;
+    margin-top: 20vh;
     margin-left: 20vw;
     font-size: 30px;
     position: relative;
@@ -77,7 +77,7 @@ export default {
     color: #999;
     font-size: 14px;
     margin-left: 20vw;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 .index-content .pl1{
     padding-left: 15px;
@@ -98,7 +98,7 @@ export default {
     width: 400px;
     height: 100%;
     background-image: url("../assets/index.jpg");
-    margin-top: 100px;
+    margin-top: 50px;
     overflow: hidden;
     margin-left: 20px;
     background-position: center;
