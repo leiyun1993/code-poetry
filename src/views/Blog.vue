@@ -12,18 +12,13 @@
                 <div class="list-box">
                     <div class="item" v-for="(item,index) in list" :key="index">
                         <div class="title-head"></div>
-                        <div class="title">Flutter笔记(六)：StaggeredGridView瀑布流+下拉刷新和加载更多</div>
-                        <div class="content">这里推荐使用0.3.0版本，github中的文档现在的版本0.2.7版本存在一些bug，当然这个组件在持续的更新中，读者在使用时应该使用最新的稳定版本。
-                            在pubspec.yaml中引入这里推荐使用0.3.0版本，github中的文档现在的版本0.2.7版本存在一些bug，当然这个组件在持续的更新中，读者在使用时应该使用最新的稳定版本。
-                            在pubspec.yaml中引入这里推荐使用0.3.0版本，github中的文档现在的版本0.2.7版本存在一些bug，当然这个组件在持续的更新中，读者在使用时应该使用最新的稳定版本。
-                            在pubspec.yaml中引入这里推荐使用0.3.0版本，github中的文档现在的版本0.2.7版本存在一些bug，当然这个组件在持续的更新中，读者在使用时应该使用最新的稳定版本。
-                            在pubspec.yaml中引入</div>
-                        <div class="read-all">阅读全文</div>
+                        <div class="title">{{item.name}}</div>
+                        <div class="content">{{item.desc}}</div>
+                        <div class="read-all" @click="readAll(item.id)">阅读全文</div>
                     </div>
                 </div>
                 <div class="page-box">
-
-                <el-pagination small layout="prev, pager, next" :total="50"></el-pagination>
+                    <el-pagination small layout="prev, pager, next" :current-page="page" :page-size="size" :total="total" @current-change="currChange"></el-pagination>
                 </div>
             </div>
         </div>
@@ -32,6 +27,7 @@
 </template>
 <script>
 import Fotter from "../components/Footer.vue";
+import { getArticleList } from "../api/article";
 export default {
     name: "",
     computed: {},
@@ -40,16 +36,35 @@ export default {
     },
     props: {},
     data() {
-        return { list: [] };
+        return {
+            list: [],
+            total: 0,
+            page:1,
+            size:3,
+        };
     },
     mounted() {
         this.getList();
     },
     methods: {
         getList() {
-            for (let i = 0; i < 3; i++) {
-                this.list.push(i);
-            }
+            getArticleList({
+                page: this.page,
+                size: this.size
+            }).then(res => {
+                console.log(res);
+                this.list = res.data.list;
+                this.total = parseInt(res.data.total);
+            });
+        },
+        currChange(page){
+            this.page = page;
+            this.getList();
+        },
+        readAll(id){
+            this.$router.push({
+                path:`/detail/${id}`,
+            })
         }
     },
     filters: {}
@@ -91,9 +106,9 @@ export default {
     display: inline-block;
     margin-left: 20vw;
 }
-.page-box{
-   margin-left: 20vw;
-   margin-top: 20px; 
+.page-box {
+    margin-left: 20vw;
+    margin-top: 20px;
 }
 .title-head {
     width: 100px;
@@ -126,5 +141,6 @@ export default {
     color: #ff8635;
     font-size: 14px;
     margin-top: 15px;
+    cursor: pointer;
 }
 </style>

@@ -8,14 +8,8 @@
                     <div class="circle"></div>
                 </div>
                 <div class="index-content">
-                    <div>我一直在找你</div>
-                    <div>当我找到你</div>
-                    <div>也就找到了整个世界</div>
-                    <div>while (i.findYou()) {</div>
-                    <div class="pl1">if (i.get() == you) {</div>
-                    <div class="pl2">System.out.print("Hello,Word!");</div>
-                    <div class="pl1">}</div>
-                    <div>}</div>
+                    <div v-html="html"></div>
+                    
                 </div>
             </div>
             <Fotter />
@@ -27,6 +21,7 @@
 </template>
 <script>
 import Fotter from "../components/Footer.vue";
+import { getIndexArticle } from "@api/article";
 export default {
     name: "",
     computed: {},
@@ -35,10 +30,21 @@ export default {
     },
     props: {},
     data() {
-        return {};
+        return {
+            html:""
+        };
     },
-    mounted() {},
-    methods: {},
+    mounted() {
+        this.getData();
+    },
+    methods: {
+        getData(){
+            getIndexArticle().then(res=>{
+                console.log(res);
+                this.html = res.data.html;
+            })
+        }
+    },
     filters: {}
 };
 </script>;

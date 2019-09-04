@@ -23,6 +23,7 @@
 </template>
 <script>
 import Fotter from "../components/Footer.vue";
+
 export default {
     name: "",
     computed: {},
@@ -43,6 +44,10 @@ export default {
             for (let i = 0; i < 8; i++) {
                 this.list.push(i);
             }
+            
+            getArticleList().then(res=>{
+                console.log("project:",res);
+            })
         }
     },
     filters: {}

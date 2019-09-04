@@ -22,7 +22,6 @@ export default {
 .footer{
     border-top: 1px solid #e5e5e5;
     padding: 30px;
-    overflow: hidden;
     position: relative;
 }
 .footer .fotter-txt{

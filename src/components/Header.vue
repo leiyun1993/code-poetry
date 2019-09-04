@@ -1,6 +1,6 @@
 <template>
-    <div class="header-root">
-        <div class="menu-box">
+    <div class="header-root" v-if="showMenu">
+        <div class="menu-box" >
             <div class="meun-item" @click="onMenuClick('index')">
                 <div class="title">首页</div>
                 <div class="circle" v-if="routeName=='index'"></div>
@@ -22,13 +22,15 @@
     </div>
 </template>
 <script>
+const indexRoute = ['index','project','blog','about','detail'];
 export default {
     name: "Header",
     computed: {},
     props: {},
     data() {
         return {
-            routeName: "index"
+            routeName: "index",
+            showMenu:true
         };
     },
     mounted() {
@@ -36,7 +38,8 @@ export default {
     watch:{
         $route(to,from){
             console.log("routeChange:",to,from);
-            this.routeName = this.$route.name;
+            this.routeName = to.name;
+            this.showMenu = indexRoute.includes(to.name);
         }
     },
     methods: {
