@@ -2,7 +2,7 @@
     <div class="footer">
         <div class="fotter-txt">左手代码，右手诗</div>
         <div class="fotter-txt" style="margin-top:10px;">© 2019 One Code One Poepry</div>
-        <div class="github"></div>
+        <div class="github" @click="githubClick"></div>
     </div>
 </template>
 <script>
@@ -14,7 +14,11 @@ export default {
         return {};
     },
     mounted() {},
-    methods: {},
+    methods: {
+        githubClick(){
+            window.open("https://github.com/leiyun1993");
+        }
+    },
     filters: {}
 };
 </script>;

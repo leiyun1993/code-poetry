@@ -27,3 +27,10 @@ export function getArticle(params) {
         params:params
     })
 }
+export function getCodeList(params) {
+    return request({
+        url: "/article/getCodeList",
+        method: "get",
+        params:params
+    })
+}

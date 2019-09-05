@@ -1,6 +1,6 @@
 <template>
-    <div class="project">
-        <div class="project-top">
+    <div class="blog">
+        <div class="blog-top">
             <div>
                 <div class="index-title">
                     <div class="title-line">一行代码</div>
@@ -10,12 +10,12 @@
             </div>
             <div class="content-box">
                 <div class="list-box">
-                    <div class="item" v-for="(item,index) in list" :key="index">
-                        <div class="title-head"></div>
-                        <div class="title">{{item.name}}</div>
-                        <div class="content">{{item.desc}}</div>
-                        <div class="read-all" @click="readAll(item.url)">查看项目</div>
+                    <div class="box-card" v-for="(item,index) in list" :key="index">
+                        <el-card>
+                            <div v-html="item.html"></div>
+                        </el-card>
                     </div>
+
                 </div>
                 <div class="page-box">
                     <el-pagination small layout="prev, pager, next" :current-page="page" :page-size="size" :total="total" @current-change="currChange"></el-pagination>
@@ -27,9 +27,9 @@
 </template>
 <script>
 import Fotter from "../components/Footer.vue";
-import { getArticleList } from "../api/article";
+import { getCodeList } from "../api/article";
 export default {
-    name: "",
+    name: "Code",
     computed: {},
     components: {
         Fotter
@@ -40,7 +40,7 @@ export default {
             list: [],
             total: 0,
             page: 1,
-            size: 3
+            size: 6
         };
     },
     mounted() {
@@ -48,34 +48,30 @@ export default {
     },
     methods: {
         getList() {
-            getArticleList({
+            getCodeList({
                 page: this.page,
-                size: this.size,
-                type: 3
+                size: this.size
             }).then(res => {
                 console.log(res);
                 this.list = res.data.list;
                 this.total = parseInt(res.data.total);
             });
         },
-        readAll(url) {
-            window.open(url);
-        },
-        currChange(page){
+        currChange(page) {
             this.page = page;
             this.getList();
-        },
+        }
     },
     filters: {}
 };
 </script>;
 <style scoped>
-.project {
+.blog {
     height: 100%;
     display: flex;
     flex-flow: column;
 }
-.project-top {
+.blog-top {
     flex: 1;
 }
 .index-title {
@@ -100,46 +96,26 @@ export default {
 }
 .content-box {
     margin-top: 30px;
+    margin-left: 20vw;
 }
 .content-box .list-box {
     display: inline-block;
-    margin-left: 20vw;
+    display: flex;
+    flex-flow: row wrap;
+    width: 1170px;
+    height: auto;
+}
+.item {
+    margin-bottom: 10px;
+    background: #fff;
+}
+.box-card {
+    width: 360px;
+    height: auto;
+    margin-right: 30px;
+    margin-bottom: 30px;
 }
 .page-box {
-    margin-left: 20vw;
     margin-top: 20px;
-}
-.title-head {
-    width: 100px;
-    height: 2px;
-    background-color: #19181b;
-}
-.content-box .item {
-    margin-top: 30px;
-}
-.item .title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 20px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.item .content {
-    font-size: 16px;
-    margin-top: 10px;
-    color: #999;
-    max-width: 870px;
-    overflow: hidden;
-    display: -webkit-box;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-}
-.read-all {
-    color: #ff8635;
-    font-size: 14px;
-    margin-top: 15px;
-    cursor: pointer;
 }
 </style>

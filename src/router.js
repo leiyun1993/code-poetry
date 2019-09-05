@@ -1,5 +1,6 @@
 const Index = () => import("./views/Index.vue");
 const Project = () => import("./views/Project.vue");
+const Code = () => import("./views/Code.vue");
 const Blog = () => import("./views/Blog.vue");
 const About = () => import("./views/About.vue");
 const Add = () => import("./views/Add.vue");
@@ -9,6 +10,11 @@ const routerList = [{
         path: "/",
         component: Index,
         name: "index"
+    },
+    {
+        path: "/code",
+        component: Code,
+        name: "code"
     },
     {
         path: "/project",

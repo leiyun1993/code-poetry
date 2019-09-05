@@ -1,28 +1,35 @@
 <template>
     <div class="header-root" v-if="showMenu">
-        <div class="menu-box" >
-            <div class="meun-item" @click="onMenuClick('index')">
-                <div class="title">首页</div>
-                <div class="circle" v-if="routeName=='index'"></div>
-            </div>
-            <div class="meun-item" @click="onMenuClick('project')">
-                <div class="title">项目</div>
-                <div class="circle" v-if="routeName=='project'"></div>
-            </div>
-            <div class="meun-item" @click="onMenuClick('blog')">
-                <div class="title">博客</div>
-                <div class="circle" v-if="routeName=='blog'"></div>
-            </div>
-            <div class="meun-item" @click="onMenuClick('about')">
-                <div class="title">关于</div>
-                <div class="circle" v-if="routeName=='about'"></div>
-            </div>
+        <transition name="el-zoom-in-bottom">
+            <div class="menu-box" v-show="showMenu1">
+                <div class="meun-item" @click="onMenuClick('index')">
+                    <div class="title">首页</div>
+                    <div class="circle" v-if="routeName=='index'"></div>
+                </div>
+                <div class="meun-item" @click="onMenuClick('code')">
+                    <div class="title">诗码</div>
+                    <div class="circle" v-if="routeName=='code'"></div>
+                </div>
+                <div class="meun-item" @click="onMenuClick('project')">
+                    <div class="title">项目</div>
+                    <div class="circle" v-if="routeName=='project'"></div>
+                </div>
+                <div class="meun-item" @click="onMenuClick('blog')">
+                    <div class="title">博客</div>
+                    <div class="circle" v-if="routeName=='blog'"></div>
+                </div>
+                <div class="meun-item" @click="onMenuClick('about')">
+                    <div class="title">关于</div>
+                    <div class="circle" v-if="routeName=='about'"></div>
+                </div>
 
-        </div>
+            </div>
+        </transition>
+        <i v-if="showMenuBtn" class="menu-icon el-icon-s-fold" @click="showMenu1=!showMenu1"></i>
     </div>
 </template>
 <script>
-const indexRoute = ['index','project','blog','about','detail'];
+const indexRoute = ["detail", "add"];
 export default {
     name: "Header",
     computed: {},
@@ -30,16 +37,19 @@ export default {
     data() {
         return {
             routeName: "index",
-            showMenu:true
+            showMenu: true,
+            showMenu1:true,
+            showMenuBtn:false
         };
     },
-    mounted() {
-    },
-    watch:{
-        $route(to,from){
-            console.log("routeChange:",to,from);
+    mounted() {},
+    watch: {
+        $route(to, from) {
+            console.log("routeChange:", to, from);
             this.routeName = to.name;
-            this.showMenu = indexRoute.includes(to.name);
+            // this.showMenu = indexRoute.includes(to.name);
+            this.showMenuBtn = indexRoute.includes(to.name);
+            this.showMenu1 = !indexRoute.includes(to.name);
         }
     },
     methods: {
@@ -91,5 +101,12 @@ export default {
     position: absolute;
     top: 15px;
     right: 25px;
+}
+.menu-icon {
+    color: #19181b;
+    position: absolute;
+    bottom: 0;
+    right: 12vw;
+    font-size: 30px;
 }
 </style>
