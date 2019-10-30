@@ -3,23 +3,23 @@
         <transition name="el-zoom-in-bottom">
             <div class="menu-box" v-show="showMenu1">
                 <div class="meun-item" @click="onMenuClick('index')">
-                    <div class="title">首页</div>
+                    <div class="title">我的首页</div>
                     <div class="circle" v-if="routeName=='index'"></div>
                 </div>
                 <div class="meun-item" @click="onMenuClick('code')">
-                    <div class="title">诗码</div>
+                    <div class="title">代码文章</div>
                     <div class="circle" v-if="routeName=='code'"></div>
                 </div>
                 <div class="meun-item" @click="onMenuClick('project')">
-                    <div class="title">项目</div>
+                    <div class="title">项目文章</div>
                     <div class="circle" v-if="routeName=='project'"></div>
                 </div>
                 <div class="meun-item" @click="onMenuClick('blog')">
-                    <div class="title">博客</div>
+                    <div class="title">随笔文章</div>
                     <div class="circle" v-if="routeName=='blog'"></div>
                 </div>
                 <div class="meun-item" @click="onMenuClick('about')">
-                    <div class="title">关于</div>
+                    <div class="title">关于自己</div>
                     <div class="circle" v-if="routeName=='about'"></div>
                 </div>
 

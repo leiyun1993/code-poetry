@@ -2,7 +2,7 @@
     <div class="detail-root">
         <div class="detail">
             <div class="title">{{article.name}}</div>
-            <div id="viewerSection"></div>
+            <div v-html="article.html"></div>
         </div>
         <Fotter />
     </div>
@@ -10,9 +10,9 @@
 <script>
 import { getArticle } from "../api/article";
 import Fotter from "../components/Footer.vue";
-import "tui-editor/dist/tui-editor-contents.css";
-import "highlight.js/styles/github.css";
-import Viewer from "tui-editor/dist/tui-editor-Viewer";
+// import "tui-editor/dist/tui-editor-contents.css";
+// import "highlight.js/styles/github.css";
+// import Viewer from "tui-editor/dist/tui-editor-Viewer";
 
 export default {
     name: "",
@@ -35,14 +35,14 @@ export default {
                 id: this.$route.params.id
             }).then(res => {
                 this.article = res.data;
-                this.initViewer();
+                // this.initViewer();
             });
         },
         initViewer() {
-            var editor = new Viewer({
-                el: document.querySelector("#viewerSection"),
-                initialValue: this.article.html
-            });
+            // var editor = new Viewer({
+            //     el: document.querySelector("#viewerSection"),
+            //     initialValue: this.article.html
+            // });
         }
     },
     filters: {}

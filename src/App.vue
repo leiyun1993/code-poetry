@@ -1,9 +1,9 @@
 <template>
     <div id="app">
-        <!-- <div class="particles-js">
+        <div class="particles-js">
             <vue-particles color="#19181b" :particleOpacity="0.7" :particlesNumber="60" shapeType="circle" :particleSize="4" linesColor="#19181b" :linesWidth="1" :lineLinked="true" :lineOpacity="0.4" :linesDistance="150" :moveSpeed="2" :hoverEffect="true" hoverMode="grab" :clickEffect="true" clickMode="push" class="lizi">
             </vue-particles>
-        </div> -->
+        </div>
         <router-view />
         <Header></Header>
     </div>

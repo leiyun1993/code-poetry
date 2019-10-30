@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <div class="fotter-txt">左手代码，右手诗</div>
+        <div class="fotter-txt">我的文章分享.<a href="http://www.beian.miit.gov.cn/" target="_black">蜀ICP备19029947号</a></div>
         <div class="fotter-txt" style="margin-top:10px;">© 2019 One Code One Poepry</div>
         <div class="github" @click="githubClick"></div>
     </div>

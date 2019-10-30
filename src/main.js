@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import routerList from "./router";
 import ElementUI from 'element-ui';
-import VueRouter from '_vue-router@3.1.3@vue-router';
+import VueRouter from 'vue-router';
 import VueParticles from 'vue-particles'  
 
 Vue.use(VueParticles);

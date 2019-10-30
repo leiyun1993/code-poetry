@@ -2,7 +2,9 @@
     <div class="root">
         <div class="index-left">
             <div class="content-box">
+                
                 <div class="index-title">
+                    <div class="title-line">我的文章</div>
                     <div class="title-line">一行代码</div>
                     <div class="title-line">一行诗</div>
                     <div class="circle"></div>
